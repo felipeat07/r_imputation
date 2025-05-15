@@ -11,7 +11,7 @@ colunas <- c(
   "capital_gain", "capital_loss", "hours_per_week", "native_country", "income"
 )
 
-dados <- read_delim("c:/Projetos/r_imputation/adult_data/adult.data", delim = ",", col_names = colunas, trim_ws = TRUE)
+dados <- read_delim("C:/Users/felip.ELITEBOOK/Documents/r_imputation/adult_data/adult.data", delim = ",", col_names = colunas, trim_ws = TRUE)
 View(dados)
 
 
@@ -92,12 +92,13 @@ calculate_precision <- function(original, imputed, mask) {
 }
 
 precision_scores <- data.frame(
-  Method = c("Mode", "SHD", "KNN", "MICE"),
+  Method = c("Mode", "SHD", "KNN"#, "MICE"
+             ),
   Precision = c(
     calculate_precision(data_complete, data_mode, data_missing),
     calculate_precision(data_complete, data_shd, data_missing),
-    calculate_precision(data_complete, data_knn, data_missing),
-    calculate_precision(data_complete, data_mice, data_missing)
+    calculate_precision(data_complete, data_knn, data_missing)#,
+    #calculate_precision(data_complete, data_mice, data_missing)
   )
 )
 
